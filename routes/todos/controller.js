@@ -60,27 +60,27 @@ module.exports = {
             });
     },
     addOne: (req, res) => {
-        var db = req.db;
-        var userToUpdate = req.params.id;
-        db.collection('todos').update({ _id: ObjectId(userToUpdate)}, req.body, function (err, result) {
-            res.send(
-                (err === null) ? {msg: ''} : {msg: err}
-            );
-        });
+        // var db = req.db;
+        // var userToUpdate = req.params.id;
+        // db.collection('todos').update({ _id: ObjectId(userToUpdate)}, req.body, function (err, result) {
+        //     res.send(
+        //         (err === null) ? {msg: ''} : {msg: err}
+        //     );
+        // });
     
         
-        // get()
-        //     .collection("todos")
-        //     .insertOne(req.body)
-        //     .then(result => {
-        //         res.status(201).json({
-        //             message: "Data successfully added",
-        //             data: result
-        //         });
-        //     })
-        //     .catch(error => {
-        //         console.log(error);
-        //     });
+        get()
+            .collection("todos")
+            .insertOne(req.body)
+            .then(result => {
+                res.status(201).json({
+                    message: "Data successfully added",
+                    data: result
+                });
+            })
+            .catch(error => {
+                console.log(error);
+            });
     },
     updateOne: (req, res) => {
         const { id } = req.params;
